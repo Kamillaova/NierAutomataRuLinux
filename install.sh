@@ -17,12 +17,12 @@ VER="1.1"
 LINK="https://github.com/AnilAntari/NierAutomataRuLinux/releases/download/$VER/generic.tar.gz"
 GAMEPATH="$HOME/.local/share/Steam/steamapps/common/NieRAutomata"
 
-[ -d "$GAMEPATH" ] && {
+if [ -d "$GAMEPATH" ]; then
 	echo "Игра была найдена в ${GAMEPATH}"
-} || {
+else
 	read -rp "Игра не была найдена в $GAMEPATH, укажите путь к игре: " GAMEPATH
 	[ -d "$GAMEPATH" ] || { echo "Игра не была найдена в $GAMEPATH, выход " ; exit 1 ; }
-}
+fi
 
 echo "Загрузка"
 wget "$LINK"
